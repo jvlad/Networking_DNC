@@ -8,6 +8,9 @@ namespace VladZamsCSTest
 
     class GoogleAPIClient: HttpClient {
 
+        /// <summary>
+        /// Supplying custom HttpMessageHandler to the base constructor
+        /// </summary>
         public GoogleAPIClient(): base(new GoogleAPIMessageHandler()) {}
 
         public async Task<string> GetMainPageHTML() {
@@ -22,7 +25,16 @@ namespace VladZamsCSTest
         protected override Task<HttpResponseMessage> SendAsync(
             HttpRequestMessage request, CancellationToken cancellationToken)
         {
+            // TODO 1: Set breakpoint here to see this method called implicitly
+            
+            // TODO 2: Add code to intercept the request here  
+
+            
+            // Substitute response with hard-coded HttpStatusCode  
             var response = new HttpResponseMessage(HttpStatusCode.Processing);
+            
+            // TODO 3: Add Response Content  
+            
             return Task.FromResult(response);
         }
     }
