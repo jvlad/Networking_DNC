@@ -20,9 +20,9 @@ namespace VladZamsCSTest
         }
     }
 
-    class GoogleAPIMessageHandler : HttpMessageHandler
+    class GoogleAPIMessageHandler : DelegatingHandler
     {
-        protected override Task<HttpResponseMessage> SendAsync(
+        protected async override Task<HttpResponseMessage> SendAsync(
             HttpRequestMessage request, CancellationToken cancellationToken)
         {
             // TODO 1: Set breakpoint here to see this method called implicitly
@@ -31,11 +31,12 @@ namespace VladZamsCSTest
 
             
             // Substitute response with hard-coded HttpStatusCode  
-            var response = new HttpResponseMessage(HttpStatusCode.Processing);
+            // var response = new HttpResponseMessage(HttpStatusCode.Processing);
+            var response = await base.SendAsync(request, cancellationToken);
             
             // TODO 3: Add Response Content  
             
-            return Task.FromResult(response);
+            return response;
         }
     }
 
