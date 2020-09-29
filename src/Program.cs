@@ -14,10 +14,7 @@ namespace VladZamsCSTest
 
         static void Main(string[] args)
         {
-            var app = new RequestApp(GoogleAPIClient, 
-                (stringToPrint) => {
-                    System.Console.WriteLine(stringToPrint);
-                });
+            var app = new SmtpApp();
             app.Launch();
         }
     }
